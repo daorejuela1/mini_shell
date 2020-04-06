@@ -14,8 +14,10 @@ int main(void)
 	int status;
 	int count;
 	if (children = -1)
-{
+	{
 	perror("Error:");
-	return (0);
-}
+	return (1);
+	}
+	if (hildren == 0)
+	
 	wait
