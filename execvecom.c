@@ -10,7 +10,7 @@
  */
 int main(void)
 {
-	char *argv[] = {"/bin/ls, l, /tmp", NULL};
+	char *argv[] = {"/bin/ls","-l","/tmp", NULL};
 	pid_t children;
 	int status;
 	int count;
