@@ -1,27 +1,33 @@
-#include <stdio.h>
-#include <stdib.h>
-#include <signal.h>
-#include <sys/types.h>
-#include <errno.h>
+#include "holberton.h"
 /**
- * 
+ * main - executes command 5 times, and waits for each children before exiting
  *
- * 
+ * Return: always 0
  */
 int main(void)
 {
-	char *argv[] = {"/bin/ls","-l","/tmp", NULL};
+	int contador = 0;
 	pid_t children;
+	char *command[] = {"/bin/ls","-l","/tmp", NULL};
 	int status;
-	int count;
-	if (children = -1)
+	
+	while (contador != 5)
 	{
-	perror("Error:");
-	return (1);
+		children = fork();
+		if (children < 0) /*Read error*/
+		{q
+			perror("Error:");
+			return (1);
+		}
+		if (children == 0) /*Children process*/
+		{
+			execve(command[0], command, NULL);
+		}
+		if (children > 0) /*Actual process*/
+		{
+			wait(&status);
+			contador++;
+		}		
 	}
-	if (children == 0)
-	{
-	_puts("all done");
-	putchar("\n");
-	}	
-	wait
+	return (0);
+}
