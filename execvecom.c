@@ -10,6 +10,7 @@
  */
 int main(void)
 {
+	char *argv[] = {"/bin/ls, l, /tmp", NULL};
 	pid_t children;
 	int status;
 	int count;
@@ -22,5 +23,5 @@ int main(void)
 	{
 	_puts("all done");
 	putchar("\n");
-	
+	}	
 	wait
