@@ -18,6 +18,9 @@ int main(void)
 	perror("Error:");
 	return (1);
 	}
-	if (hildren == 0)
+	if (children == 0)
+	{
+	_puts("all done");
+	putchar("\n");
 	
 	wait
