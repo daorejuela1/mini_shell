@@ -11,7 +11,6 @@ int main (void)
 	size_t len = 0;
 	pid_t children;
 	int status;
-	struct stat st;
 	const char *delim = " \n\t\r";
 	char *command[1024];
 	/*argv = "hola" "mundo" 0*/
@@ -27,4 +26,24 @@ int main (void)
 		printf("%s", line);
 		children = fork();
 		command[0] = strtok(line, delim);
+		command[1] = NULL;
+		if (children < 0) /*Read error*/
+		{
+			perror("Error:");
+			return (1);
+		}
+		if (children == 0) /*Children process*/
+		{
+			
+			if (execve(command[0], command, NULL) == -1)
+				perror("Error file not found");
+		}
+		if (children > 0) /*Actual process*/
+		{
+			wait(&status);
+		}	
+	}
+	perror("Exit...\n");
+	free(line);
+	return (0);
 }

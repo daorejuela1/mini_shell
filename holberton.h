@@ -11,4 +11,21 @@
 /*space for functions prototypes*/
 int _putchar(char c);
 int _puts(char *s);
+char *_getenv(const char *name);
+/*Structure definition*/
+/**
+ * struct path_dir - singly linked list
+ * @direct: string with whole folder
+ * @len: length of the string
+ * @next: points to the next node
+ *
+ * Description: singly linked list node structure
+ * for Holberton project
+ */
+typedef struct path_dir
+{
+	char *str;
+	unsigned int len;
+	struct path_dir *next;
+} path_dir_node;
 #endif
