@@ -4,30 +4,27 @@
  *
  * Return: always 0
  */
-int main(void)
+int main (void)
 {
-	int contador = 0;
+	int read;
+	char *line = NULL;
+	size_t len = 0;
 	pid_t children;
-	char *command[] = {"/bin/ls","-l","/tmp", NULL};
 	int status;
-	
-	while (contador != 5)
+	struct stat st;
+	const char *delim = " \n\t\r";
+	char *command[1024];
+	/*argv = "hola" "mundo" 0*/
+	while (1)
 	{
+		printf("#cisfun$ ");
+		read =  getline(&line, &len, stdin);
+		if (read == -1)
+		{
+			printf("Error");
+			exit(1);
+		}
+		printf("%s", line);
 		children = fork();
-		if (children < 0) /*Read error*/
-		{q
-			perror("Error:");
-			return (1);
-		}
-		if (children == 0) /*Children process*/
-		{
-			execve(command[0], command, NULL);
-		}
-		if (children > 0) /*Actual process*/
-		{
-			wait(&status);
-			contador++;
-		}		
-	}
-	return (0);
+		command[0] = strtok(line, delim);
 }
